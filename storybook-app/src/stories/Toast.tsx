@@ -19,6 +19,7 @@ const Toast = () => {
 
   return (
     <div>
+      <div>저기!</div>
       {messages.map((item: MessageType) => (
         <ToastItem key={item.message} message={item.message} />
       ))}
@@ -48,6 +49,7 @@ const ToastItem = ({ message }: { message: string }) => {
 
   return (
     <div>
+      <div>나 렌더링좀 시켜주라</div>
       <div>{message}</div>
     </div>
   );

@@ -11,12 +11,9 @@ const meta = {
   decorators: [RecoilRoot],
 };
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Template: Story = {
-  args: {
-    text: "hi",
-  },
+export const Render = () => {
+  return <ToastList />;
 };
 
 export const Default = () => {
