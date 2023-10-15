@@ -1,6 +1,6 @@
 import React from "react";
 
-import TaskList from "./ToastList";
+import TaskList from "./TaskList";
 import * as TaskStories from "./Task.stories";
 
 export default {
