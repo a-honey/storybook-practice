@@ -1,40 +1,26 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { RecoilRoot, useRecoilState } from "recoil";
-import ToastList from "./Toast";
+import Toast from "./Toast";
 
 import { toastState } from "./Toast";
 
 const meta = {
   title: "Toast",
-  component: ToastList,
-  decorators: [RecoilRoot],
+  component: Toast,
+  decorators: [
+    // story에 임의의 wrapper를 제공
+    (story: any) => <div style={{ padding: "3rem" }}>{story()}</div>,
+  ],
 };
 export default meta;
 
-export const Render = () => {
-  return <ToastList />;
-};
+const Template = (args: any) => <Toast {...args} />;
 
-export const Default = () => {
-  const [toastMessages, setToastMessages] = useRecoilState(toastState);
-  const [newMessage, setNewMessage] = React.useState("");
-
-  // 테스트용 메시지 추가
-  const addToastMessage = (message: string) => {
-    setToastMessages((prevMessages) => [...prevMessages, { message }]);
-  };
-
-  return (
-    <div>
-      <input
-        type="text"
-        placeholder="새로운 메시지 입력"
-        value={newMessage}
-        onChange={(e) => setNewMessage(e.target.value)}
-      />
-      <button onClick={() => addToastMessage(newMessage)}>추가</button>
-      <ToastList />
-    </div>
-  );
+export const Default: any = Template.bind({});
+Default.args = {
+  messages: [{ message: "안녕하세요" }, { message: "알림입니다" }],
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => {
+    Default.args.messages.append(e.currentTarget.value);
+  },
 };
