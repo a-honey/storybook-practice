@@ -1,4 +1,9 @@
-import React, { ChangeEvent, FormEventHandler, useEffect } from "react";
+import React, {
+  ChangeEvent,
+  FormEventHandler,
+  MouseEventHandler,
+  useEffect,
+} from "react";
 
 import { atom, useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -19,7 +24,7 @@ const Toast = ({
   handleSubmit,
 }: {
   messages: MessageType[];
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleSubmit: () => void;
 }) => {
   return (
     <div>
@@ -32,10 +37,10 @@ const Toast = ({
           />
         ))}
       </div>
-      <form onSubmit={handleSubmit}>
+      <div>
         <input type="text" />
-        <button>알림올리기</button>
-      </form>
+        <button onClick={handleSubmit}>알림올리기</button>
+      </div>
     </div>
   );
 };

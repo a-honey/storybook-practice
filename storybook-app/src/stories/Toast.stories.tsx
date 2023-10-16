@@ -4,6 +4,7 @@ import { RecoilRoot, useRecoilState } from "recoil";
 import Toast from "./Toast";
 
 import { toastState } from "./Toast";
+import { action } from "@storybook/addon-actions";
 
 const meta = {
   title: "Toast",
@@ -20,7 +21,5 @@ const Template = (args: any) => <Toast {...args} />;
 export const Default: any = Template.bind({});
 Default.args = {
   messages: [{ message: "안녕하세요" }, { message: "알림입니다" }],
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => {
-    Default.args.messages.append(e.currentTarget.value);
-  },
+  handleSubmit: action("handleSubmit"),
 };
