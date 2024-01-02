@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Bubble from "./stories/Bubble";
+import SocialLogin from "./stories/SocialLogin";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         >
           Learn React
         </a>
+        <SocialLogin />
         <Bubble />
       </header>
     </div>
